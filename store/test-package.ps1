@@ -67,7 +67,9 @@ $results['  ...and wrote a log in the package data folder'] = (Test-Path "$pkgDa
 # ---- Check 3: a Task Scheduler task starts Relax through the alias ----
 Remove-Item "$work\Target\hello.txt" -Force -ErrorAction SilentlyContinue
 $tn = 'Relax\StoreTest'
-schtasks.exe /Create /F /TN $tn /SC ONCE /ST 23:59 /TR "`"$alias`" --run `"$job`"" | Out-Null
+# Windows PowerShell 5.1 mangles quotes inside arguments of native programs, so the command goes through cmd.exe,
+# written exactly the way Relax itself passes it to Task Scheduler (\" for a quote inside /TR).
+cmd.exe /c "schtasks.exe /Create /F /TN $tn /SC ONCE /ST 23:59 /TR ""\""$alias\"" --run \""$job\"""" >nul 2>&1"
 $results['Task Scheduler task created'] = ($LASTEXITCODE -eq 0)
 schtasks.exe /Run /TN $tn | Out-Null
 $ok = $false
