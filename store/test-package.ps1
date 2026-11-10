@@ -62,7 +62,11 @@ $pkgData = Join-Path $env:LOCALAPPDATA "Packages\$($pkg.PackageFamilyName)\Local
 $p = Start-Process $alias -ArgumentList '--run', "`"$job`"" -Wait -PassThru
 $results['Backup run through the alias finished with exit code 0'] = ($p.ExitCode -eq 0)
 $results['  ...and copied the file'] = Test-Path "$work\Target\hello.txt"
-$results['  ...and wrote a log in the package data folder'] = (Test-Path "$pkgData\logs") -and ((Get-ChildItem "$pkgData\logs" -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0)
+$since = (Get-Date).AddMinutes(-2)
+$realData = Join-Path $env:APPDATA 'in.edu.vsa.relax'
+$logDir = @("$pkgData\logs", "$realData\logs") | Where-Object { Test-Path $_ } | Where-Object { Get-ChildItem $_ -Filter '*Store test*' -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -gt $since } } | Select-Object -First 1
+$results['  ...and wrote a log'] = [bool]$logDir
+if ($logDir) { $pkgData = Split-Path $logDir }
 
 # ---- Check 3: a Task Scheduler task starts Relax through the alias ----
 Remove-Item "$work\Target\hello.txt" -Force -ErrorAction SilentlyContinue
@@ -81,7 +85,7 @@ Write-Host ''
 Write-Host '================ RESULTS ================'
 $fail = 0
 foreach ($k in $results.Keys) { $s = if ($results[$k]) { 'PASS' } else { $fail++; 'FAIL' }; Write-Host ("{0}  {1}" -f $s, $k) }
-Write-Host "Data folder inside the package (settings, logs, sync database): $pkgData"
+Write-Host "Data folder (settings, logs, sync database): $pkgData"
 Write-Host 'Now start Relax from the Start menu and check the screens, Settings, Save job, Schedule and Logs.'
 Start-Process explorer.exe "shell:AppsFolder\$($pkg.PackageFamilyName)!Relax"
 
@@ -90,9 +94,10 @@ if ($Wack) {
     $appcert = Join-Path $kits 'App Certification Kit\appcert.exe'
     if (-not (Test-Path $appcert)) { throw 'appcert.exe was not found (Windows App Certification Kit).' }
     Write-Host 'Running the Windows App Certification Kit. Please wait, do not touch the PC...'
-    $report = Join-Path $PWD "$out\wack-report.xml"
+    $report = Join-Path $PWD "$out\wack-report-$ver-$(Get-Date -Format yyyyMMdd-HHmmss).xml"
     & $appcert reset | Out-Null
     & $appcert test -appxpackagepath (Join-Path $PWD $test) -reportoutputpath $report
+    if ($LASTEXITCODE -ne 0 -and -not (Test-Path $report)) { throw 'The Windows App Certification Kit did not produce a report.' }
     if (Test-Path $report) {
         $x = [xml](Get-Content $report -Raw)
         Write-Host "WACK overall result: $($x.REPORT.OVERALL_RESULT)   (report: $report)"
