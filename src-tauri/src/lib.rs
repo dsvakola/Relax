@@ -4,6 +4,7 @@
 
 mod commands;
 pub mod engine;
+mod license;
 mod runner;
 
 use serde::Serialize;
@@ -45,6 +46,8 @@ pub fn run() {
         .manage(commands::AppState::default())
         .invoke_handler(tauri::generate_handler![
             app_info,
+            license::get_license,
+            license::buy_app,
             commands::compare_folders,
             commands::set_view,
             commands::get_rows,

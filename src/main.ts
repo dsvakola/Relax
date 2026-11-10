@@ -23,6 +23,7 @@ import {
 import { actionVerb, esc, formatBytes, formatCount, formatDuration } from './format';
 import { VirtualGrid } from './grid';
 import { openLogs, openSchedule, refreshScheduleDot } from './extras';
+import { initLicense } from './license';
 import { ask, initJobsPane, initMenus, refreshJobs, togglePane, type Commands } from './chrome';
 import {
   buildJob,
@@ -1031,6 +1032,7 @@ showPrefs();
 void updateTitle();
 void refreshScheduleDot();
 void refreshJobs();
+initLicense();
 // Started by double-clicking a .relax file: load that job.
 void api.startupJob().then(async (path) => {
   if (!path) return;

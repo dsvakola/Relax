@@ -201,6 +201,8 @@
         <span class="vf-total" id="totalBytes"></span>
       </div>
       <div id="statusRight" class="status-right">
+        <span class="trial-badge" id="trialBadge" hidden></span>
+        <button class="btn-buy" id="btnBuyTrial" hidden>Buy</button>
         <button class="btn-link" id="btnLogs" title="See the logs of previous syncs (Ctrl+L)">Logs</button>
         <span class="status-credit">Vidyasagar Academy</span>
       </div>
@@ -326,6 +328,23 @@
       </div>
       <div class="modal-foot">
         <button class="btn btn-primary" id="btnResultClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shown after the 7-day trial: nothing of the user's data is touched -->
+  <div class="modal-backdrop modal-top buy-screen" id="buyModal" hidden>
+    <div class="modal buy-box" role="alertdialog" aria-labelledby="buyTitle">
+      <img src="/img/relax-icon.svg" alt="Relax" class="buy-logo">
+      <h2 id="buyTitle">Buy Relax</h2>
+      <p class="buy-lead">Your 7-day free trial has ended.</p>
+      <p>To keep using Relax, buy it once from the Microsoft Store. <b id="buyPrice">Rs. 299, one-time purchase</b>.</p>
+      <p class="buy-safe">Your files, jobs and backups are safe and untouched. Nothing was deleted or changed.</p>
+      <p class="buy-error" id="buyError" hidden></p>
+      <div class="buy-actions">
+        <button class="btn btn-primary" id="btnBuyNow">Buy Relax</button>
+        <button class="btn" id="btnBuyCheck">I have already bought it</button>
+        <button class="btn" id="btnBuyExit">Exit</button>
       </div>
     </div>
   </div>

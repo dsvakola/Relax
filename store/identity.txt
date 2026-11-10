@@ -3,9 +3,12 @@
 # Keep the names on the left as they are; change only the part after "=".
 
 # Package/Identity/Name  (reserve the name in Partner Center, then paste it here)
-NAME=PASTE-IDENTITY-NAME-HERE
+NAME=VidyasagarAcademy.Relax-Yourdataissafe
 DISPLAY_NAME=Relax - Your data is safe!
 
 # Package/Identity/Publisher and Package/Properties/PublisherDisplayName (same account as Observer)
 PUBLISHER=CN=E5EAB892-17BA-4AC0-A205-3AE9F2BA13DD
 PUBLISHER_DISPLAY=Vidyasagar Academy
+
+# For reference only (not used by the build):
+# Store ID 9N4BPLF2TD95   Package Family Name VidyasagarAcademy.Relax-Yourdataissafe_z3tqm701my9nc

@@ -16,6 +16,13 @@ export interface AppInfo {
   email: string;
 }
 
+/** `free` = not a Microsoft Store install; `unknown` = the Store cannot be asked and nothing is saved (Relax stays usable). */
+export interface LicenseInfo {
+  state: 'free' | 'trial' | 'licensed' | 'expired' | 'unknown';
+  daysLeft: number | null;
+  price: string;
+}
+
 export type CompareVariant = 'timeAndSize' | 'content' | 'size';
 export type SyncVariant = 'twoWay' | 'mirror' | 'update' | 'custom';
 export type Direction = 'toRight' | 'toLeft' | 'none';
@@ -208,6 +215,8 @@ export interface ScheduleInfo {
 
 export const api = {
   appInfo: (): Promise<AppInfo> => invoke<AppInfo>('app_info'),
+  getLicense: (): Promise<LicenseInfo> => invoke<LicenseInfo>('get_license'),
+  buyApp: (): Promise<LicenseInfo> => invoke<LicenseInfo>('buy_app'),
 
   compare: (job: JobConfig, onProgress: (p: CompareProgress) => void): Promise<Summary> => {
     const ch = new Channel<CompareProgress>();

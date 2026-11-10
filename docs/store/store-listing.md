@@ -1,12 +1,19 @@
 # Microsoft Store listing: Relax - Your data is safe!
 
-Copy these into Partner Center > your app > Store listings > English.
+Copy these into Partner Center > Relax > Store listings > English (United States).
+Store ID 9N4BPLF2TD95 · Identity Name VidyasagarAcademy.Relax-Yourdataissafe
+
+## Pricing and availability
+- Price: Rs. 299, one-time purchase (paid app, no subscription).
+- Free trial: 7 days (Partner Center > Pricing and availability > Free trial > 7 days).
+- Wording to use everywhere: "Rs. 299 one-time, 7-day free trial". Never describe the app as "free".
+- Publisher display name: Vidyasagar Academy
 
 ## Product name
 Relax - Your data is safe!
 
-## Short description (max 1000 characters; shown at the top)
-Free, 100% offline backup and folder synchronization for Windows. Compare two folders, preview every difference, then back up only what changed. Nothing is copied or deleted until you click Synchronize.
+## Short description (max 1000 characters)
+100% offline backup and folder synchronization for Windows. Compare two folders, preview every difference, then back up only what changed. Nothing is copied or deleted until you click Synchronize. Rs. 299 one-time, 7-day free trial.
 
 ## Description
 Relax keeps your important files safe on USB drives, external hard disks and other folders, simply and reliably, without the cloud.
@@ -26,7 +33,7 @@ Safe by design
 • Every file is copied to a temporary name first and renamed only when it is complete.
 • Deleted and replaced files go to the Recycle Bin or a versions folder.
 • Nothing is deleted when a source folder or drive is missing or empty.
-• Free space is checked before starting.
+• Free disk space is checked before starting.
 
 Convenient
 • Save your backups as jobs and open them with one click.
@@ -37,10 +44,16 @@ Convenient
 100% offline and private
 Relax never connects to the internet. No account, no ads, no tracking. Your files stay on your PC and your drives.
 
+Rs. 299 one-time purchase with a 7-day free trial. During the trial you see how many days are left. When it ends, Relax asks you to buy it; your files, jobs and backups are never touched or locked.
+
 Developed by Prof. Dattaraj S. Vidyasagar & Prof. Yash D. Vidyasagar, for Vidyasagar Academy.
 
-## What's new in this version
-First release in the Microsoft Store.
+## What's new in this version (2.1.0)
+• Now sold in the Microsoft Store: Rs. 299 one-time, with a 7-day free trial.
+• The trial shows "Trial: N days left" and a Buy button; after the trial a clear Buy Relax screen appears. Your files and backups are never touched.
+• Runs on any Windows 10/11 PC, even without extra runtime files installed.
+• New sharper logos at every screen size.
+• Brand, About and Help updated to Vidyasagar Academy, with links to the source and privacy policy on GitHub.
 
 ## Product features (one per line, max 20)
 Preview every change before backing up
@@ -53,6 +66,7 @@ Scheduled automatic backups
 Include and exclude filters
 Logs of every backup
 100% offline: no account, no ads, no tracking
+Rs. 299 one-time, 7-day free trial
 
 ## Search terms (max 7)
 backup
@@ -69,14 +83,24 @@ Utilities & tools (subcategory: Backup & manage)
 ## Contact / support
 Website: https://vsa.edu.in/
 Support e-mail: softinquiry@vsa.edu.in
-Source and privacy: https://github.com/dsvakola/relax
-Privacy policy URL: https://vsa.edu.in/privacy-policy/#Relax_-_Your_data_is_safe_Windows_software
+Source and privacy: https://github.com/dsvakola/Relax
+Privacy policy URL (paste this in Partner Center): https://vsa.edu.in/privacy-policy/#Relax_-_Your_data_is_safe_Windows_software
+Also on GitHub: https://github.com/dsvakola/Relax/blob/main/PRIVACY.md
 
 ## Copyright and trademark
 © 2026 Vidyasagar Academy
 
 ## Age rating questionnaire (answers)
-No violence, no user interaction or chat, no sharing of location or personal information, no purchases, no gambling. Expected rating: 3+ / Everyone.
+No violence, no user interaction or chat, no sharing of location or personal information, no gambling. The only purchase is the one-time purchase of the app itself. Expected rating: 3+ / Everyone.
 
-## Screenshots (in release/SourceForge-upload/screenshots)
-1-main-window.png, 2-comparing.png, 3-settings.png, 4-schedule.png
+## Notes for certification (Partner Center > Submission options)
+- Relax is a full-trust desktop app (capability runFullTrust only). It never asks for administrator rights.
+- It uses no network access of its own. The trial and purchase check is done by Windows and the Microsoft Store (Windows.Services.Store).
+- To test: choose two folders, press Compare, then Synchronize. Scheduled backups use Windows Task Scheduler through the RelaxBackup.exe alias.
+
+## Screenshots (take these from the installed Store test package, 1920 x 1080)
+1. Main window with a comparison preview
+2. Comparing two folders (progress)
+3. Settings (sync modes and safety options)
+4. Schedule dialog
+5. "Trial: N days left" badge in the status bar (optional)

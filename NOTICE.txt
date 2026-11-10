@@ -21,5 +21,8 @@ USB removable media.
 Relax works 100% offline. It never uploads, collects or
 transmits your data.
 
+Copies bought from the Microsoft Store are licensed under the
+Microsoft Standard Application License Terms.
+
 THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
 KIND. Always keep more than one copy of important data.
