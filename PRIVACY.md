@@ -17,10 +17,10 @@ Only on your own computer, Relax keeps a few small files: your settings, the bac
 The Microsoft Store version of Relax is a paid app (Rs. 299, one-time) with a 7-day free trial. Whether the trial or purchase is active is checked by Windows and the Microsoft Store through the standard Store licence service, not by Relax. Relax receives only the answer ("trial, N days left", "purchased" or "not purchased"), and sends nothing about you or your files. Microsoft handles your purchase and payment under the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement). Vidyasagar Academy does not receive your payment or personal details.
 
 ## Links
-The About and Help menus contain links to our website, to this page and to the source code on GitHub, and an e-mail address. They open only when you click them, in your own web browser or e-mail program.
+The About and Help menus contain links to our website, to this page, to our software catalog on GitHub, and an e-mail address. They open only when you click them, in your own web browser or e-mail program.
 
 ## Changes
-If this policy ever changes, the new version will be published here and at https://vsa.edu.in/privacy-policy/#Relax_-_Your_data_is_safe_Windows_software with a new date.
+If this policy ever changes, the new version will be published here and at https://github.com/dsvakola/Relax/blob/main/PRIVACY.md with a new date.
 
 ## Contact
 Vidyasagar Academy · https://vsa.edu.in/ · softinquiry@vsa.edu.in

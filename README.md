@@ -5,7 +5,7 @@
 Developed by **Prof. Dattaraj S. Vidyasagar** & **Prof. Yash D. Vidyasagar**, for **Vidyasagar Academy**.
 - Website: [https://vsa.edu.in/](https://vsa.edu.in/)
 - Email: [softinquiry@vsa.edu.in](mailto:softinquiry@vsa.edu.in)
-- Source and privacy policy: [github.com/dsvakola/relax](https://github.com/dsvakola/relax) · [PRIVACY.md](https://github.com/dsvakola/relax/blob/main/PRIVACY.md)
+- Source, privacy policy and more: [github.com/dsvakola/Relax](https://github.com/dsvakola/Relax) · [PRIVACY.md](https://github.com/dsvakola/Relax/blob/main/PRIVACY.md) · More software: [github.com/dsvakola/software](https://github.com/dsvakola/software)
 
 Relax compares two folders, shows every difference in a preview, and changes nothing until you click **Synchronize**. It never connects to the internet.
 

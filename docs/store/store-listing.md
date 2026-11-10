@@ -53,7 +53,7 @@ Developed by Prof. Dattaraj S. Vidyasagar & Prof. Yash D. Vidyasagar, for Vidyas
 • The trial shows "Trial: N days left" and a Buy button; after the trial a clear Buy Relax screen appears. Your files and backups are never touched.
 • Runs on any Windows 10/11 PC, even without extra runtime files installed.
 • New sharper logos at every screen size.
-• Brand, About and Help updated to Vidyasagar Academy, with links to the source and privacy policy on GitHub.
+• Brand, About and Help updated to Vidyasagar Academy, with links to the privacy policy and more software on GitHub.
 
 ## Product features (one per line, max 20)
 Preview every change before backing up
@@ -83,9 +83,9 @@ Utilities & tools (subcategory: Backup & manage)
 ## Contact / support
 Website: https://vsa.edu.in/
 Support e-mail: softinquiry@vsa.edu.in
-Source and privacy: https://github.com/dsvakola/Relax
-Privacy policy URL (paste this in Partner Center): https://vsa.edu.in/privacy-policy/#Relax_-_Your_data_is_safe_Windows_software
-Also on GitHub: https://github.com/dsvakola/Relax/blob/main/PRIVACY.md
+Source: https://github.com/dsvakola/Relax
+More software: https://github.com/dsvakola/software
+Privacy policy URL (paste this in Partner Center; GitHub is always online): https://github.com/dsvakola/Relax/blob/main/PRIVACY.md
 
 ## Copyright and trademark
 © 2026 Vidyasagar Academy

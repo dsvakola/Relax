@@ -4,7 +4,7 @@ version = "2.1.0"
 description = "Relax - Your data is safe! Reliable local backup and folder synchronization for Windows."
 authors = ["Prof. Dattaraj S. Vidyasagar", "Prof. Yash D. Vidyasagar"]
 homepage = "https://vsa.edu.in/"
-repository = "https://github.com/dsvakola/relax"
+repository = "https://github.com/dsvakola/Relax"
 edition = "2021"
 
 [lib]

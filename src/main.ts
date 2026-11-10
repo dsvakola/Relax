@@ -930,8 +930,8 @@ const commands: Commands = {
   shortcuts: showShortcuts,
   website: () => void api.openLink('https://vsa.edu.in/'),
   email: () => void api.openLink('mailto:softinquiry@vsa.edu.in'),
-  github: () => void api.openLink('https://github.com/dsvakola/relax'),
-  privacy: () => void api.openLink('https://github.com/dsvakola/relax/blob/main/PRIVACY.md'),
+  github: () => void api.openLink('https://github.com/dsvakola/software'),
+  privacy: () => void api.openLink('https://github.com/dsvakola/Relax/blob/main/PRIVACY.md'),
   about: () => void showAbout(),
 };
 
