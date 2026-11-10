@@ -4,5 +4,7 @@ src-tauri/gen/
 *.log
 dist/
 src-tauri/target-test/
+target/
+Release/Store/test/
 Release/
 store/pkg/

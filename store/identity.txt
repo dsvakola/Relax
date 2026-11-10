@@ -1,0 +1,11 @@
+# Microsoft Store identity of Relax - Your data is safe!
+# Copy these from Partner Center > Relax > Product management > Product identity.
+# Keep the names on the left as they are; change only the part after "=".
+
+# Package/Identity/Name  (reserve the name in Partner Center, then paste it here)
+NAME=PASTE-IDENTITY-NAME-HERE
+DISPLAY_NAME=Relax - Your data is safe!
+
+# Package/Identity/Publisher and Package/Properties/PublisherDisplayName (same account as Observer)
+PUBLISHER=CN=E5EAB892-17BA-4AC0-A205-3AE9F2BA13DD
+PUBLISHER_DISPLAY=Vidyasagar Academy

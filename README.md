@@ -30,7 +30,7 @@ Relax compares two folders, shows every difference in a preview, and changes not
 - **Filters** with FreeFileSync-style wildcards (`*.tmp`, `node_modules`, `\Downloads\`).
 - **Jobs** saved as `.relax` files. Double-click a job file to open it.
 - **Scheduled runs** through Windows Task Scheduler (daily, weekly or at sign-in), without a window.
-- **Logs** of every sync, kept in `%APPDATA%\in.edu.vsa.relax\logs`.
+- **Logs** of every sync. Open them from Tools > Logs (the "open folder" button always shows the right place). The installer and portable versions keep them in `%APPDATA%\in.edu.vsa.relax\logs`; the Microsoft Store version keeps them (and settings and the sync database) in its own protected app folder, `%LOCALAPPDATA%\Packages\<package>\LocalCache\Roaming\in.edu.vsa.relax\logs`, which Windows removes when the app is uninstalled.
 
 ## Using Relax
 
@@ -48,6 +48,8 @@ Requirements: Windows 10/11, [Rust](https://rustup.rs) (MSVC), Visual Studio Bui
 Double-click **`Build-Relax.bat`**. It prepares a static C runtime (so Relax needs no VC++ runtime on the PC), installs the build tools with pnpm, runs the engine tests, and puts the results in `Release\`:
 - `Relax-Setup-2.1.0.exe`: the installer (per user, no administrator rights needed).
 - `Relax-Portable-2.1.0.exe`: a single file that runs from anywhere, including a USB stick.
+
+Microsoft Store package: run `BUILD-STORE-PACKAGE.bat` (makes the unsigned `Release\Store\Relax_<version>_x64.msix` to upload in Partner Center), and `TEST-STORE-PACKAGE.bat` as administrator to try a test-signed copy and run the Windows App Certification Kit. Put the Identity Name from Partner Center in `store\identity.txt` first. The Store version asks for no administrator rights (capability `runFullTrust` only).
 
 For development: `pnpm install`, then `pnpm tauri dev`.
 
