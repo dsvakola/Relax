@@ -103,7 +103,7 @@ Store logos: tell me which logo sizes are requested (1:1 300x300 etc.) and wait;
 6) SUBMISSION OPTIONS
 - Publishing: publish as soon as certification passes.
 - Notes for certification (paste exactly):
-Relax is a full-trust desktop app (capability runFullTrust only). It never asks for administrator rights. It uses no network access of its own. The trial and purchase check is done by Windows and the Microsoft Store (Windows.Services.Store). To test: choose two folders, press Compare, then Synchronize. Scheduled backups use Windows Task Scheduler through the RelaxBackup.exe alias.
+Relax is a classic Win32 desktop backup and folder-synchronization program, packaged with the runFullTrust capability, which it needs to read and copy files in any folder or drive the user chooses (including USB drives) and to start scheduled backups through Windows Task Scheduler. It never asks for administrator rights, and it makes no network connections of its own. The trial and purchase check is done by Windows and the Microsoft Store (Windows.Services.Store). To test: choose two folders, press Compare, then Synchronize. Scheduled backups use Windows Task Scheduler through the RelaxBackup.exe alias.
 
 FINISH
 List every section and say "complete" or "needs attention". Do NOT submit. Wait for me.

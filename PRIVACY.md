@@ -5,6 +5,8 @@ Last updated: 10 November 2026 · Developed by Prof. Dattaraj S. Vidyasagar & Pr
 **Relax is 100% offline and collects nothing.**
 
 ## What Relax does with your data
+Relax is a full-trust Windows desktop program, so it can read and write the folders and drives that you choose. Microsoft therefore lists it as an app that can access personal files. Relax uses that access only for the backup you start, on your own PC, and it collects, stores, sends and shares none of it.
+
 - Relax reads and copies only the files and folders that you choose, between drives and folders on your own computer or connected storage (for example USB drives or external hard disks).
 - Your files are never uploaded, sent or shared anywhere.
 - Relax has no account, no advertising, no analytics, no tracking and no telemetry. It does not collect personal information of any kind, from anyone, including children.
