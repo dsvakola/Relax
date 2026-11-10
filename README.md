@@ -31,7 +31,7 @@ Relax compares two folders, shows every difference in a preview, and changes not
 - **Jobs** saved as `.relax` files. Double-click a job file to open it.
 - **Scheduled runs** through Windows Task Scheduler (daily, weekly or at sign-in), without a window.
 - **Microsoft Store version:** Rs. 299 one-time purchase with a 7-day free trial (a "Trial: N days left" badge and a Buy button; after the trial a Buy Relax screen). The licence check is done by Windows and the Store; your files, jobs and backups are never touched or locked. Other builds (installer, portable, development) show no trial.
-- **Logs** of every sync. Open them from Tools > Logs (the "open folder" button always shows the right place). Logs, the sync database and the licence note are kept in `%APPDATA%\in.edu.vsa.relax` in every version, including the Microsoft Store version (tested on Windows 11), so they are not lost when you uninstall or switch versions.
+- **Logs** of every sync. Open them from Tools > Logs (the "open folder" button always shows the right place). Logs, the sync database and the licence note are kept in `%APPDATA%\in.edu.vsa.relax`. Windows may keep the Microsoft Store version's copy of that folder inside its own package folder (`%LOCALAPPDATA%\Packages\<package>\LocalCache\Roaming\in.edu.vsa.relax`); Tools > Logs > open folder always shows the real place.
 
 ## Using Relax
 
