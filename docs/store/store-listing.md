@@ -48,7 +48,7 @@ Rs. 299 one-time purchase with a 7-day free trial. During the trial you see how 
 
 Developed by Prof. Dattaraj S. Vidyasagar & Prof. Yash D. Vidyasagar, for Vidyasagar Academy.
 
-## What's new in this version (2.1.0)
+## What's new in this version (2.1.1)
 • Now sold in the Microsoft Store: Rs. 299 one-time, with a 7-day free trial.
 • The trial shows "Trial: N days left" and a Buy button; after the trial a clear Buy Relax screen appears. Your files and backups are never touched.
 • Runs on any Windows 10/11 PC, even without extra runtime files installed.

@@ -1,6 +1,6 @@
 # Relax - Your data is safe!
 
-**Reliable, 100% offline backup and folder synchronization for Windows (version 2.1.0)**
+**Reliable, 100% offline backup and folder synchronization for Windows (version 2.1.1)**
 
 Developed by **Prof. Dattaraj S. Vidyasagar** & **Prof. Yash D. Vidyasagar**, for **Vidyasagar Academy**.
 - Website: [https://vsa.edu.in/](https://vsa.edu.in/)
@@ -47,8 +47,8 @@ To run a job without the window: `Relax.exe --run "D:\Jobs\My backup.relax"`. Th
 Requirements: Windows 10/11, [Rust](https://rustup.rs) (MSVC), Visual Studio Build Tools (C++), Node.js 18+ and [pnpm](https://pnpm.io) (pnpm only; npm and yarn are not used). The WebView2 runtime is built into Windows 10/11.
 
 Double-click **`Build-Relax.bat`**. It prepares a static C runtime (so Relax needs no VC++ runtime on the PC), installs the build tools with pnpm, runs the engine tests, and puts the results in `Release\`:
-- `Relax-Setup-2.1.0.exe`: the installer (per user, no administrator rights needed).
-- `Relax-Portable-2.1.0.exe`: a single file that runs from anywhere, including a USB stick.
+- `Relax-Setup-2.1.1.exe`: the installer (per user, no administrator rights needed).
+- `Relax-Portable-2.1.1.exe`: a single file that runs from anywhere, including a USB stick.
 
 Microsoft Store package: run `BUILD-STORE-PACKAGE.bat` (makes the unsigned `Release\Store\Relax_<version>_x64.msix` to upload in Partner Center), and `TEST-STORE-PACKAGE.bat` as administrator to try a test-signed copy and run the Windows App Certification Kit. Put the Identity Name from Partner Center in `store\identity.txt` first. The Store version asks for no administrator rights (capability `runFullTrust` only).
 

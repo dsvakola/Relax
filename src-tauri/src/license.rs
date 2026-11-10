@@ -104,6 +104,16 @@ fn is_packaged() -> bool {
     rc != APPMODEL_ERROR_NO_PACKAGE
 }
 
+/// True when the package carries the Microsoft Store signature. A test-signed copy (made by TEST-STORE-PACKAGE.bat)
+/// or any other sideloaded copy has no Store licence, so it is never treated as an unpaid Store install.
+fn is_store_signed() -> bool {
+    use windows::ApplicationModel::{Package, PackageSignatureKind};
+    Package::Current()
+        .and_then(|p| p.SignatureKind())
+        .map(|k| k == PackageSignatureKind::Store)
+        .unwrap_or(true) // if unsure, ask the Store as usual
+}
+
 /// For testing the screens in a debug build: `RELAX_LICENSE_SIM=trial:5`, `expired`, `licensed` or `unknown`.
 #[cfg(debug_assertions)]
 fn simulated() -> Option<LicenseInfo> {
@@ -167,7 +177,7 @@ pub fn check() -> LicenseInfo {
     if let Some(s) = simulated() {
         return s;
     }
-    if !is_packaged() {
+    if !is_packaged() || !is_store_signed() {
         return LicenseInfo::new("free", None);
     }
     match std::thread::spawn(ask_store).join() {
