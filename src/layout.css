@@ -1,0 +1,246 @@
+/* Relax - menu bar, saved-jobs pane, busy overlay, and layouts for every window size.
+   Developed by Prof. Dattaraj S. Vidyasagar & Prof. Yash D. Vidyasagar, for Vidyasagar Academy. */
+
+:root {
+  --create: #DC2626;
+  --equal: #16A34A;
+  --update: #2563EB;
+  --delete: #7C3AED;
+  --pane-w: 230px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --create: #F87171;
+    --equal: #4ADE80;
+    --update: #60A5FA;
+    --delete: #C4B5FD;
+  }
+}
+
+/* ---------------- Menu bar ---------------- */
+.menubar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 30px;
+  padding: 0 6px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.menubar-spacer { flex: 1; }
+.menubar .offline-badge { margin-right: 4px; font-size: 11.5px; padding: 1px 8px; }
+.menu { position: relative; }
+.menu-title {
+  height: 26px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  cursor: default;
+}
+.menu-title u { text-decoration: none; }
+.menubar.alt .menu-title u { text-decoration: underline; }
+.menu-title:hover, .menu.open .menu-title { background: var(--row-hover); }
+.menu-list {
+  display: none;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  z-index: 300;
+  min-width: 270px;
+  padding: 4px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+.menu.open .menu-list { display: block; }
+.menu-list button {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: default;
+  white-space: nowrap;
+}
+.menu-list button:hover:not(:disabled), .menu-list button:focus-visible { background: var(--row-hover); outline: none; }
+.menu-list button:disabled { opacity: 0.45; }
+.menu-list kbd { font: inherit; font-size: 12px; color: var(--muted); }
+.menu-list hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; }
+
+/* ---------------- Main layout ---------------- */
+.app { min-width: 0; }
+.toolbar { flex-wrap: nowrap; min-width: 0; flex-shrink: 0; }
+.workspace { flex: 1; display: flex; min-height: 0; }
+.main { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.main .pairs { border-bottom: 1px solid var(--border); }
+
+/* ---------------- Saved jobs pane ---------------- */
+.jobs-pane {
+  width: var(--pane-w);
+  min-width: 160px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.workspace.pane-hidden .jobs-pane,
+.workspace.pane-hidden .pane-splitter { display: none; }
+.jobs-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 8px 6px 12px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+}
+.jobs-tools { display: flex; gap: 2px; }
+.icon-btn {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+}
+.icon-btn:hover { background: var(--row-hover); border-color: var(--border); }
+.icon-btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.icon-btn .dot { top: 2px; right: 2px; }
+.jobs-list { flex: 1; overflow: auto; padding: 4px; }
+.job-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 8px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.job-item:hover { background: var(--row-hover); }
+.job-item.active { background: var(--sel); font-weight: 600; }
+.job-item img { width: 18px; height: 18px; flex-shrink: 0; }
+.job-item .job-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.jobs-empty { padding: 14px 10px; color: var(--muted); line-height: 1.5; font-size: 12px; }
+.jobs-hint { padding: 8px 12px; font-size: 11.5px; color: var(--muted); border-top: 1px solid var(--border); line-height: 1.4; }
+.pane-splitter { width: 5px; margin-left: -3px; cursor: col-resize; flex-shrink: 0; position: relative; z-index: 5; }
+.pane-splitter:hover, .pane-splitter.dragging { background: var(--accent); opacity: 0.35; }
+.ctx-menu button.danger { color: var(--red); }
+
+/* ---------------- Grid: alignment, symbols, hints, busy ---------------- */
+.grid { position: relative; }
+/* The header gets the same right padding as the body's scrollbar (set from main.ts), so columns line up. */
+.grid-head { box-sizing: border-box; }
+.grid-body { scrollbar-gutter: stable; }
+.act { font-weight: 800; font-size: 15px; letter-spacing: 0; line-height: 1; }
+.gc.gact .act { font-size: 17px; }
+.act-create { color: var(--create); }
+.act-equal { color: var(--equal); }
+.act-update { color: var(--update); }
+.act-delete { color: var(--delete); }
+.grow.act-row-deleteRight .gc:nth-child(5),
+.grow.act-row-deleteLeft .gc:nth-child(1) { color: var(--delete); }
+.vf .act { font-size: 13px; }
+
+.hidden-hint {
+  padding: 6px 12px;
+  border-top: 1px solid var(--border);
+  background: var(--info-bg);
+  font-size: 12.5px;
+}
+.hidden-hint[hidden] { display: none; }
+
+.busy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--panel) 82%, transparent);
+  z-index: 20;
+}
+.busy[hidden] { display: none; }
+.busy-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 380px;
+  max-width: 90%;
+  padding: 26px 32px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.busy-title { font-size: 17px; font-weight: 600; }
+.busy-detail { font-size: 15px; color: var(--text); font-variant-numeric: tabular-nums; max-width: 520px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.busy-progress { width: 320px; }
+.busy-progress[hidden] { display: none; }
+.spinner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 4px solid var(--panel-alt);
+  border-top-color: var(--accent);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------------- Smaller windows ---------------- */
+.tb-select select { max-width: 170px; }
+
+@media (max-width: 1280px) {
+  :root { --pane-w: 200px; }
+  .grid-head, .grow { grid-template-columns: minmax(0, 1fr) 76px 118px 52px minmax(0, 1fr) 76px 118px; }
+}
+
+@media (max-width: 1100px) {
+  .toolbar { gap: 10px; padding: 6px 8px; }
+  .tb-btn .tb-label { display: none; }
+  .tb-main { padding: 0 12px; }
+  .grid-head, .grow { grid-template-columns: minmax(0, 1fr) 70px 0 48px minmax(0, 1fr) 70px 0; }
+  .gdate { visibility: hidden; padding: 0 !important; overflow: hidden; }
+  .menubar .offline-badge { display: none; }
+}
+
+@media (max-width: 900px) {
+  .workspace:not(.pane-forced) .jobs-pane,
+  .workspace:not(.pane-forced) .pane-splitter { display: none; }
+  .tb-select select { max-width: 120px; }
+  .pair-head, .pair-row { grid-template-columns: 1fr 56px 1fr; }
+  .btn-browse { padding: 0 8px; }
+  .status-credit { display: none; }
+  .view-filters .vf-total { display: none; }
+}
+
+/* "Action" header must always fit its narrow column. */
+.gcol.gact { padding-left: 2px; padding-right: 2px; text-align: center; }

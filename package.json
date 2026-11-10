@@ -1,0 +1,27 @@
+{
+  "name": "relax",
+  "private": true,
+  "type": "module",
+  "description": "Relax - Your data is safe! Reliable local backup and folder synchronization for Windows.",
+  "author": "Prof. Dattaraj S. Vidyasagar & Prof. Yash D. Vidyasagar, for Vidyasagar Academy <softinquiry@vsa.edu.in>",
+  "homepage": "https://vsa.edu.in/",
+  "license": "SEE LICENSE IN NOTICE.txt",
+  "packageManager": "pnpm@12.18.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "tauri": "tauri",
+    "icons": "tauri icon assets/relax-icon-1024.png"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "2.12.4",
+    "@tauri-apps/plugin-dialog": "2.8.3",
+    "@tauri-apps/plugin-opener": "2.7.2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.3",
+    "typescript": "7.0.2",
+    "vite": "8.3.4"
+  }
+}

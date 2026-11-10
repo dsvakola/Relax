@@ -1,0 +1,23 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Permissions for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-show",
+    "core:window:allow-set-title",
+    "core:window:allow-close",
+    "core:window:allow-destroy",
+    "dialog:default",
+    {
+      "identifier": "opener:allow-open-url",
+      "allow": [
+        { "url": "https://vsa.edu.in/" },
+        { "url": "https://github.com/dsvakola/relax" },
+        { "url": "https://github.com/dsvakola/relax/blob/main/PRIVACY.md" },
+        { "url": "mailto:softinquiry@vsa.edu.in" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relax - Your data is safe!</title>
+  <!-- Developed by Prof. Dattaraj S. Vidyasagar & Prof. Yash D. Vidyasagar, for Vidyasagar Academy. https://vsa.edu.in/ -->
+</head>
+<body>
+  <div class="app">
+
+    <!-- Menu bar -->
+    <nav class="menubar" id="menubar">
+      <div class="menu" data-menu="file">
+        <button class="menu-title"><u>F</u>ile</button>
+        <div class="menu-list">
+          <button data-cmd="jobNew"><span>New job</span><kbd>Ctrl+N</kbd></button>
+          <button data-cmd="jobOpen"><span>Open job…</span><kbd>Ctrl+O</kbd></button>
+          <button data-cmd="jobSave"><span>Save job</span><kbd>Ctrl+S</kbd></button>
+          <button data-cmd="jobSaveAs"><span>Save job as…</span><kbd>Ctrl+Shift+S</kbd></button>
+          <hr>
+          <button data-cmd="jobsFolder"><span>Open jobs folder</span></button>
+          <hr>
+          <button data-cmd="exit"><span>Exit</span><kbd>Alt+F4</kbd></button>
+        </div>
+      </div>
+      <div class="menu" data-menu="edit">
+        <button class="menu-title"><u>E</u>dit</button>
+        <div class="menu-list">
+          <button data-cmd="addPair"><span>Add folder pair</span></button>
+          <button data-cmd="swapAll"><span>Swap left and right</span></button>
+          <button data-cmd="clearPairs"><span>Clear all folders</span></button>
+          <hr>
+          <button data-cmd="selectAll"><span>Select all rows</span><kbd>Ctrl+A</kbd></button>
+          <hr>
+          <button data-cmd="dirRight"><span>Make right like left  →</span><kbd>Alt+Right</kbd></button>
+          <button data-cmd="dirLeft"><span>Make left like right  ←</span><kbd>Alt+Left</kbd></button>
+          <button data-cmd="dirNone"><span>Do nothing</span><kbd>Alt+Down</kbd></button>
+        </div>
+      </div>
+      <div class="menu" data-menu="tools">
+        <button class="menu-title"><u>T</u>ools</button>
+        <div class="menu-list">
+          <button data-cmd="compare"><span>Compare</span><kbd>F5</kbd></button>
+          <button data-cmd="sync"><span>Synchronize</span><kbd>F9</kbd></button>
+          <hr>
+          <button data-cmd="filter"><span>Filter…</span><kbd>Ctrl+F</kbd></button>
+          <button data-cmd="settings"><span>Settings…</span><kbd>Ctrl+,</kbd></button>
+          <hr>
+          <button data-cmd="schedule"><span>Schedule this job…</span></button>
+          <button data-cmd="logs"><span>Sync logs…</span><kbd>Ctrl+L</kbd></button>
+          <hr>
+          <button data-cmd="togglePane"><span id="menuPaneLabel">Hide saved jobs pane</span><kbd>Ctrl+J</kbd></button>
+        </div>
+      </div>
+      <div class="menu" data-menu="help">
+        <button class="menu-title"><u>H</u>elp</button>
+        <div class="menu-list">
+          <button data-cmd="guide"><span>User guide</span><kbd>F1</kbd></button>
+          <button data-cmd="shortcuts"><span>Keyboard shortcuts</span></button>
+          <hr>
+          <button data-cmd="website"><span>Visit vsa.edu.in</span></button>
+          <button data-cmd="email"><span>Contact: softinquiry@vsa.edu.in</span></button>
+          <button data-cmd="github"><span>Relax on GitHub</span></button>
+          <button data-cmd="privacy"><span>Privacy policy</span></button>
+          <hr>
+          <button data-cmd="about"><span>About Relax</span></button>
+        </div>
+      </div>
+      <div class="menubar-spacer"></div>
+      <span class="offline-badge" title="Relax never connects to the internet. Your files stay on your PC and drives.">100% Offline</span>
+    </nav>
+
+    <!-- Toolbar -->
+    <header class="toolbar">
+      <div class="tb-group">
+        <button class="tb-btn tb-main" id="btnCompare" title="Compare left and right folders (F5)">
+          <svg viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5M12 2v20"/></svg>
+          <span id="btnCompareText">Compare</span>
+        </button>
+        <label class="tb-select" title="How files are compared">
+          <select id="selCompare">
+            <option value="timeAndSize">Time and size</option>
+            <option value="content">File content</option>
+            <option value="size">File size</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="tb-group">
+        <button class="tb-btn" id="btnFilter" title="Include / exclude filter (Ctrl+F)">
+          <svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.5V19l4 2v-8.5z"/></svg>
+          <span class="tb-label">Filter</span>
+          <span class="dot" id="filterDot" hidden></span>
+        </button>
+      </div>
+
+      <div class="tb-group tb-sync-group">
+        <label class="tb-select" title="What synchronization does">
+          <select id="selSync">
+            <option value="mirror">Mirror ⟶</option>
+            <option value="update">Update ⟶</option>
+            <option value="twoWay">Two-way ⟷</option>
+            <option value="custom">Custom</option>
+          </select>
+        </label>
+        <button class="tb-btn tb-icon" id="btnSettings" title="Settings: comparison, synchronization and deleted files (Ctrl+,)">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+        </button>
+        <button class="tb-btn tb-main tb-sync" id="btnSync" title="Start synchronization (F9)" disabled>
+          <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12A9 9 0 0 1 18.5 5.8"/><path d="M18 2v4h-4M6 22v-4h4"/></svg>
+          <span>Synchronize</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace" id="workspace">
+      <!-- Saved jobs -->
+      <aside class="jobs-pane" id="jobsPane">
+        <div class="jobs-head">
+          <span>Saved jobs</span>
+          <div class="jobs-tools">
+            <button class="icon-btn" id="btnJobNew" title="New job (Ctrl+N)">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <button class="icon-btn" id="btnJobSave" title="Save this job (Ctrl+S)">
+              <svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v5h8V3M7 21v-7h10v7"/></svg>
+            </button>
+            <button class="icon-btn" id="btnJobOpen" title="Open a job file… (Ctrl+O)">
+              <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7.5a2 2 0 0 0-1.9 1.4L3 19z"/><path d="M3 19l2.6-7.6A2 2 0 0 1 7.5 10H22l-2.7 8a2 2 0 0 1-1.9 1.4H3z"/></svg>
+            </button>
+            <button class="icon-btn" id="btnSchedule" title="Run this job automatically">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6M12 2v3"/></svg>
+              <span class="dot dot-green" id="scheduleDot" hidden></span>
+            </button>
+          </div>
+        </div>
+        <div class="jobs-list" id="jobsList"></div>
+        <div class="jobs-hint">Double-click a job to open it and compare. Right-click for more.</div>
+      </aside>
+      <div class="pane-splitter" id="paneSplitter" title="Drag to resize"></div>
+
+      <main class="main">
+        <!-- Folder pairs -->
+        <section class="pairs">
+          <div class="pair-head">
+            <div class="side-label">Left (source)</div>
+            <div></div>
+            <div class="side-label">Right (target)</div>
+          </div>
+          <div id="pairRows"></div>
+          <button class="btn-link" id="btnAddPair">+ Add folder pair</button>
+        </section>
+
+        <!-- Warnings after Compare -->
+        <section class="notices" id="notices" hidden></section>
+
+        <!-- Comparison grid -->
+        <section class="grid" id="grid">
+          <div class="grid-head" id="gridHead">
+            <div class="gcol gname">Name</div>
+            <div class="gcol gsize">Size</div>
+            <div class="gcol gdate">Date modified</div>
+            <div class="gcol gact" title="Action">Action</div>
+            <div class="gcol gname">Name</div>
+            <div class="gcol gsize">Size</div>
+            <div class="gcol gdate">Date modified</div>
+          </div>
+          <div class="grid-body" id="gridBody">
+            <div class="grid-empty" id="gridEmpty">
+              <img src="/img/relax-icon.svg" alt="">
+              <h2 id="emptyTitle">Choose your folders, then click Compare</h2>
+              <p id="emptyText">Relax shows every difference here first. Nothing is copied or deleted until you click <strong>Synchronize</strong>.</p>
+            </div>
+          </div>
+          <div class="hidden-hint" id="hiddenHint" hidden></div>
+          <!-- Shown while comparing -->
+          <div class="busy" id="busy" hidden>
+            <div class="busy-card">
+              <div class="spinner"></div>
+              <div class="busy-title" id="busyTitle">Scanning folders…</div>
+              <div class="busy-detail" id="busyDetail">Starting…</div>
+              <div class="progress busy-progress" id="busyProgress" hidden><div class="progress-fill" id="busyFill"></div></div>
+              <button class="btn btn-danger" id="btnBusyCancel">Cancel</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Status bar with view filters -->
+    <footer class="statusbar">
+      <div id="statusLeft">Ready</div>
+      <div class="view-filters" id="viewFilters" hidden>
+        <button class="vf" data-key="showCreate" title="New items to copy"><span class="act act-create">+→</span> <b id="cntCreate">0</b></button>
+        <button class="vf" data-key="showUpdate" title="Items to overwrite"><span class="act act-update">→</span> <b id="cntUpdate">0</b></button>
+        <button class="vf" data-key="showDelete" title="Items to delete"><span class="act act-delete">✕</span> <b id="cntDelete">0</b></button>
+        <button class="vf" data-key="showConflict" title="Conflicts"><span class="act act-conflict">⚠</span> <b id="cntConflict">0</b></button>
+        <button class="vf" data-key="showSkipped" title="Differences left unchanged"><span class="act act-skip">–</span> skipped</button>
+        <button class="vf" data-key="showEqual" title="Identical items"><span class="act act-equal">=</span> <b id="cntEqual">0</b></button>
+        <span class="vf-total" id="totalBytes"></span>
+      </div>
+      <div id="statusRight" class="status-right">
+        <button class="btn-link" id="btnLogs" title="See the logs of previous syncs (Ctrl+L)">Logs</button>
+        <span class="status-credit">Vidyasagar Academy</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Right-click menu for saved jobs -->
+  <div class="ctx-menu" id="jobMenu" hidden>
+    <button data-job="open">Open / edit</button>
+    <button data-job="compare">Open and compare</button>
+    <hr>
+    <button data-job="rename">Rename…</button>
+    <button data-job="reveal">Show in Explorer</button>
+    <hr>
+    <button data-job="remove">Remove from list</button>
+    <button data-job="delete" class="danger">Delete job file…</button>
+  </div>
+
+  <!-- Text input / confirmation dialog -->
+  <div class="modal-backdrop modal-top" id="askModal" hidden>
+    <div class="modal" role="dialog">
+      <div class="modal-head"><h2 id="askTitle"></h2></div>
+      <div class="modal-body">
+        <div class="msg-text" id="askText"></div>
+        <input type="text" id="askInput" class="path-input" spellcheck="false" hidden>
+        <div class="err-msg ask-error" id="askError" hidden></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" id="askNo" hidden></button>
+        <span class="tb-spacer"></span>
+        <button class="btn" id="askCancel">Cancel</button>
+        <button class="btn btn-primary" id="askOk">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right-click menu -->
+  <div class="ctx-menu" id="ctxMenu" hidden>
+    <button data-dir="toRight">Make right like left <span class="act act-update">→</span></button>
+    <button data-dir="toLeft">Make left like right <span class="act act-update">←</span></button>
+    <button data-dir="none">Do nothing <span class="act act-skip">–</span></button>
+    <hr>
+    <button data-open="left">Show left item in Explorer</button>
+    <button data-open="right">Show right item in Explorer</button>
+  </div>
+
+  <!-- Sync confirmation -->
+  <div class="modal-backdrop" id="confirmModal" hidden>
+    <div class="modal modal-wide" role="dialog">
+      <div class="modal-head"><h2>Start synchronization?</h2></div>
+      <div class="modal-body">
+        <div class="confirm-variant" id="confirmVariant"></div>
+        <table class="confirm-table" id="confirmTable"></table>
+        <div class="confirm-warnings" id="confirmWarnings"></div>
+        <div class="form-row">
+          <label for="selDeletion">Deleted and overwritten files:</label>
+          <select id="selDeletion">
+            <option value="recycleBin">Move to the Recycle Bin (recommended)</option>
+            <option value="versioning">Move to a versions folder</option>
+            <option value="permanent">Delete permanently</option>
+          </select>
+        </div>
+        <div class="form-row" id="rowVersions" hidden>
+          <input type="text" id="inpVersions" class="path-input" placeholder="Versions folder, e.g. D:\Backup\Versions" spellcheck="false">
+          <button class="btn" id="btnVersionsBrowse">Browse</button>
+        </div>
+        <p class="hint" id="hintDeletion">USB sticks and memory cards have no Recycle Bin. There, Relax keeps old files in a <code>Relax-Versions</code> folder on that drive.</p>
+        <label class="check"><input type="checkbox" id="chkVerify"> Verify every copied file (slower, compares byte by byte)</label>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" id="btnConfirmCancel">Cancel</button>
+        <button class="btn btn-primary" id="btnConfirmStart">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sync progress -->
+  <div class="modal-backdrop" id="progressModal" hidden>
+    <div class="modal modal-wide" role="dialog">
+      <div class="modal-head"><h2 id="progTitle">Synchronizing…</h2><span class="muted" id="progPair"></span></div>
+      <div class="modal-body">
+        <div class="progress"><div class="progress-fill" id="progFill"></div></div>
+        <div class="prog-stats">
+          <span id="progItems">0 of 0 items</span>
+          <span id="progBytes">0 B of 0 B</span>
+          <span id="progSpeed"></span>
+          <span id="progEta"></span>
+        </div>
+        <div class="prog-current" id="progCurrent">Preparing…</div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" id="btnPause">Pause</button>
+        <button class="btn btn-danger" id="btnCancelSync">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error during sync -->
+  <div class="modal-backdrop modal-top" id="errorModal" hidden>
+    <div class="modal" role="alertdialog">
+      <div class="modal-head"><h2>A file could not be processed</h2></div>
+      <div class="modal-body">
+        <div class="err-path" id="errPath"></div>
+        <div class="err-msg" id="errMsg"></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-danger" data-decision="cancel">Cancel sync</button>
+        <span class="tb-spacer"></span>
+        <button class="btn" data-decision="ignoreAll">Ignore all</button>
+        <button class="btn" data-decision="ignore">Ignore</button>
+        <button class="btn btn-primary" data-decision="retry">Retry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sync result -->
+  <div class="modal-backdrop" id="resultModal" hidden>
+    <div class="modal modal-wide" role="dialog">
+      <div class="modal-head"><h2 id="resTitle">Synchronization complete</h2></div>
+      <div class="modal-body">
+        <div class="res-summary" id="resSummary"></div>
+        <div class="res-list" id="resList"></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-primary" id="btnResultClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple message -->
+  <div class="modal-backdrop modal-top" id="msgModal" hidden>
+    <div class="modal" role="alertdialog">
+      <div class="modal-head msg-head"><h2 id="msgTitle"></h2><img src="/img/vsa-logo.png" alt="Vidyasagar Academy" class="msg-logo" id="msgLogo" hidden></div>
+      <div class="modal-body"><div class="msg-text" id="msgText"></div></div>
+      <div class="modal-foot"><button class="btn btn-primary" id="btnMsgOk">OK</button></div>
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div class="modal-backdrop" id="filterModal" hidden>
+    <div class="modal modal-wide" role="dialog">
+      <div class="modal-head"><h2>Filter</h2></div>
+      <div class="modal-body">
+        <p class="hint">One pattern per line. <code>*</code> means any characters, <code>?</code> one character. A name like <code>*.tmp</code> or <code>node_modules</code> matches at any level. A path starting with <code>\</code> is counted from the chosen folder, e.g. <code>\Archive\</code>. A trailing <code>\</code> means folders only.</p>
+        <div class="filter-cols">
+          <label>Include (only these)
+            <textarea id="txtInclude" rows="9" spellcheck="false"></textarea>
+          </label>
+          <label>Exclude (never these)
+            <textarea id="txtExclude" rows="9" spellcheck="false"></textarea>
+          </label>
+        </div>
+        <p class="hint">Examples to exclude: <code>*.tmp</code> &nbsp; <code>~$*</code> &nbsp; <code>node_modules</code> &nbsp; <code>.git\</code> &nbsp; <code>\Downloads\</code></p>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" id="btnFilterDefaults">Defaults</button>
+        <span class="tb-spacer"></span>
+        <button class="btn" id="btnFilterCancel">Cancel</button>
+        <button class="btn btn-primary" id="btnFilterOk">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <div class="modal modal-wide" role="dialog">
+      <div class="modal-head"><h2>Settings</h2></div>
+      <div class="modal-body">
+        <fieldset>
+          <legend>Compare files by</legend>
+          <label class="check"><input type="radio" name="cmpVariant" value="timeAndSize"> <span><b>Time and size</b> (fast, recommended)</span></label>
+          <label class="check"><input type="radio" name="cmpVariant" value="content"> <span><b>Content</b> (reads every file, slow but certain)</span></label>
+          <label class="check"><input type="radio" name="cmpVariant" value="size"> <span><b>Size only</b></span></label>
+          <div class="form-row">
+            <label for="inpTolerance">Treat time differences up to</label>
+            <input type="number" id="inpTolerance" class="num-input" min="0" max="3600">
+            <span>seconds as equal (2 suits USB drives)</span>
+          </div>
+          <label class="check"><input type="checkbox" id="chkHourShift"> Ignore differences of exactly one hour (daylight saving on FAT drives)</label>
+        </fieldset>
+        <fieldset>
+          <legend>Synchronization</legend>
+          <div class="radio-row">
+            <label class="check"><input type="radio" name="syncVariant" value="mirror"> <b>Mirror ⟶</b></label>
+            <label class="check"><input type="radio" name="syncVariant" value="update"> <b>Update ⟶</b></label>
+            <label class="check"><input type="radio" name="syncVariant" value="twoWay"> <b>Two-way ⟷</b></label>
+            <label class="check"><input type="radio" name="syncVariant" value="custom"> <b>Custom</b></label>
+          </div>
+          <div id="dirTable"></div>
+          <label class="check danger-check"><input type="checkbox" id="chkAllowEmpty"> Allow syncing from an empty folder (can delete everything on the other side)</label>
+        </fieldset>
+        <fieldset>
+          <legend>Deleted and overwritten files</legend>
+          <div class="form-row">
+            <select id="setDeletion">
+              <option value="recycleBin">Move to the Recycle Bin (recommended)</option>
+              <option value="versioning">Move to a versions folder</option>
+              <option value="permanent">Delete permanently</option>
+            </select>
+          </div>
+          <div class="form-row" id="setVersionsRow" hidden>
+            <input type="text" id="setVersions" class="path-input" placeholder="Versions folder, e.g. D:\Backup\Versions" spellcheck="false">
+            <button class="btn" id="btnSetVersions">Browse</button>
+          </div>
+          <label class="check"><input type="checkbox" id="setVerify"> Verify every copied file (slower, compares byte by byte)</label>
+        </fieldset>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" id="btnSettingsCancel">Cancel</button>
+        <button class="btn btn-primary" id="btnSettingsOk">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule -->
+  <div class="modal-backdrop" id="scheduleModal" hidden>
+    <div class="modal" role="dialog">
+      <div class="modal-head"><h2>Run this job automatically</h2></div>
+      <div class="modal-body">
+        <p class="hint" id="schedJob"></p>
+        <div class="notice notice-info" id="schedStatus"></div>
+        <label class="check"><input type="radio" name="schedKind" value="daily" checked> Every day</label>
+        <div class="form-row sched-weekly">
+          <label class="check"><input type="radio" name="schedKind" value="weekly"> Every week on</label>
+          <select id="schedDay">
+            <option value="MON">Monday</option><option value="TUE">Tuesday</option><option value="WED">Wednesday</option>
+            <option value="THU">Thursday</option><option value="FRI">Friday</option><option value="SAT">Saturday</option>
+            <option value="SUN">Sunday</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="schedTime">at</label>
+          <input type="time" id="schedTime" class="num-input time-input" value="21:00">
+        </div>
+        <label class="check"><input type="radio" name="schedKind" value="logon"> Every time I sign in to Windows</label>
+        <p class="hint">Relax runs in the background without a window. Errors are skipped and written to the log, and nothing is deleted when a folder or drive is missing. The PC must be on, and the drives connected, at that time.</p>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-danger" id="btnSchedRemove">Remove schedule</button>
+        <span class="tb-spacer"></span>
+        <button class="btn" id="btnSchedCancel">Close</button>
+        <button class="btn btn-primary" id="btnSchedSave">Save schedule</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logs -->
+  <div class="modal-backdrop" id="logsModal" hidden>
+    <div class="modal modal-logs" role="dialog">
+      <div class="modal-head"><h2>Sync logs</h2><span class="muted">Newest first</span></div>
+      <div class="logs-body">
+        <div class="logs-list" id="logsList"></div>
+        <pre class="log-text" id="logText"></pre>
+      </div>
+      <div class="modal-foot">
+        <button class="btn" id="btnLogsFolder">Open logs folder</button>
+        <span class="tb-spacer"></span>
+        <button class="btn btn-primary" id="btnLogsClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- About dialog -->
+  <div class="modal-backdrop" id="aboutModal" hidden>
+    <div class="modal" role="dialog" aria-labelledby="aboutTitle">
+      <div class="about-top">
+        <img src="/img/relax-logo.png" alt="Relax - Your data is safe!" class="about-logo">
+        <div class="about-version" id="aboutVersion">Version 2.0.2 · 64-bit</div>
+      </div>
+      <div class="about-body">
+        <p class="about-desc">A reliable, 100% offline backup and folder synchronization tool for Windows. Compare folders, preview every change, then mirror, update or two-way sync to USB drives, external disks and other folders.</p>
+        <div class="about-dev">
+          <img src="/img/vsa-logo.png" alt="Vidyasagar Academy" class="vsa-logo">
+          <div>
+            <div class="about-label">Developed by</div>
+            <div class="about-strong">Prof. Dattaraj S. Vidyasagar &amp; Prof. Yash D. Vidyasagar</div>
+            <div class="about-org">for Vidyasagar Academy</div>
+            <div class="about-links">
+              <a href="#" data-url="https://vsa.edu.in/">https://vsa.edu.in/</a>
+              <a href="#" data-url="mailto:softinquiry@vsa.edu.in">softinquiry@vsa.edu.in</a>
+              <a href="#" data-url="https://github.com/dsvakola/relax">github.com/dsvakola/relax</a>
+              <a href="#" data-url="https://github.com/dsvakola/relax/blob/main/PRIVACY.md">Privacy policy</a>
+            </div>
+          </div>
+        </div>
+        <p class="about-copy">Copyright © 2026 Vidyasagar Academy. All rights reserved.</p>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-primary" id="btnAboutClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+node_modules/
+src-tauri/target/
+src-tauri/gen/
+*.log
+dist/
+src-tauri/target-test/
+Release/
+store/pkg/

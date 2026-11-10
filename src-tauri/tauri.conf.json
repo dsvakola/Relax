@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Relax - Your data is safe!",
+  "mainBinaryName": "Relax",
+  "version": "2.1.0",
+  "identifier": "in.edu.vsa.relax",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Relax - Your data is safe!",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 960,
+        "minHeight": 600,
+        "center": true,
+        "visible": false,
+        "backgroundColor": "#F5F7FA",
+        "additionalBrowserArgs": "--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection --disable-gpu"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "publisher": "Vidyasagar Academy",
+    "copyright": "© 2026 Vidyasagar Academy",
+    "homepage": "https://vsa.edu.in/",
+    "category": "Utility",
+    "shortDescription": "Reliable local backup and folder synchronization",
+    "longDescription": "Relax - Your data is safe! is a 100% offline backup and folder synchronization tool for Windows: compare folders, preview every change, then mirror, update or two-way sync to USB drives, external disks and other folders.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico"
+    ],
+    "licenseFile": "../NOTICE.txt",
+    "fileAssociations": [
+      {
+        "ext": [
+          "relax"
+        ],
+        "name": "Relax job",
+        "description": "Relax backup job",
+        "role": "Editor",
+        "mimeType": "application/x-relax-job"
+      }
+    ],
+    "windows": {
+      "nsis": {
+        "installerIcon": "icons/icon.ico",
+        "headerImage": "installer/header.bmp",
+        "sidebarImage": "installer/sidebar.bmp",
+        "installMode": "currentUser",
+        "displayLanguageSelector": false,
+        "startMenuFolder": "Vidyasagar Academy",
+        "installerHooks": "installer/hooks.nsh"
+      }
+    }
+  }
+}
