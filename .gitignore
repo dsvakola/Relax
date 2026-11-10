@@ -8,3 +8,4 @@ target/
 Release/Store/test/
 Release/
 store/pkg/
+.pnpm-bin/

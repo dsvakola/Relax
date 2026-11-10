@@ -16,6 +16,16 @@ if not exist ".cargo" mkdir ".cargo"
 )
 if errorlevel 1 goto :error
 
+rem pnpm: use the one on the PATH; if there is none, make one with Corepack (comes with Node.js; no administrator rights needed).
+where pnpm >nul 2>nul
+if errorlevel 1 (
+  where corepack >nul 2>nul || (echo Node.js is not installed on this PC yet. See README.md. & goto :nopnpm)
+  if not exist ".pnpm-bin" mkdir ".pnpm-bin"
+  call corepack enable --install-directory ".pnpm-bin"
+  set "PATH=%~dp0.pnpm-bin;%PATH%"
+)
+where pnpm >nul 2>nul || goto :nopnpm
+
 echo [2/5] Installing build tools with pnpm...
 call pnpm install
 if errorlevel 1 goto :error
@@ -46,6 +56,12 @@ echo   Portable : %~dp0Release\Relax-Portable-%VERSION%.exe
 echo ======================================================================
 pause
 exit /b 0
+
+:nopnpm
+echo.
+echo pnpm could not be set up. Please send me a photo of this screen.
+pause
+exit /b 1
 
 :error
 echo.

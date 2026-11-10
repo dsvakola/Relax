@@ -9,7 +9,15 @@ setlocal EnableDelayedExpansion
 title Build Relax - Microsoft Store package
 cd /d "%~dp0"
 where cargo >nul 2>nul || (echo Rust is not installed on this PC yet. See README.md. & goto failed)
-where pnpm >nul 2>nul || (echo pnpm is not installed on this PC yet. See README.md. & goto failed)
+rem pnpm: use the one on the PATH; if there is none, make one with Corepack (comes with Node.js; no administrator rights needed).
+where pnpm >nul 2>nul
+if errorlevel 1 (
+  where corepack >nul 2>nul || (echo Node.js is not installed on this PC yet. See README.md. & goto failed)
+  if not exist ".pnpm-bin" mkdir ".pnpm-bin"
+  call corepack enable --install-directory ".pnpm-bin"
+  set "PATH=%~dp0.pnpm-bin;%PATH%"
+)
+where pnpm >nul 2>nul || goto failed
 
 rem The C runtime goes inside the EXE, so Relax also runs on a fresh Windows PC.
 if not exist ".cargo" mkdir ".cargo"
