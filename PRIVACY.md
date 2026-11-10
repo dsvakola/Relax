@@ -13,10 +13,10 @@ Relax is a full-trust Windows desktop program, so it can read and write the fold
 - Relax contains no code that connects to the internet by itself.
 
 ## What is stored on your computer
-Only on your own computer, Relax keeps a few small files: your settings, the backup jobs you save, the logs of your synchronizations, a record of the last synchronization of each folder pair, and (in the Microsoft Store version) a note of whether your purchase or trial is active. They are kept in the folder `%APPDATA%\in.edu.vsa.relax` of your Windows user profile (for the Microsoft Store version Windows may keep that folder inside the app's own package folder), and you can delete them at any time. Your backups and the files you copied are never removed by Relax or by uninstalling it.
+Only on your own computer, Relax keeps a few small files: your settings, the backup jobs you save, the logs of your synchronizations, a record of the last synchronization of each folder pair. They are kept in the folder `%APPDATA%\in.edu.vsa.relax` of your Windows user profile (for the Microsoft Store version Windows may keep that folder inside the app's own package folder), and you can delete them at any time. Your backups and the files you copied are never removed by Relax or by uninstalling it.
 
-## Microsoft Store purchase and trial
-The Microsoft Store version of Relax is a paid app (Rs. 299, one-time) with a 7-day free trial. Whether the trial or purchase is active is checked by Windows and the Microsoft Store through the standard Store licence service, not by Relax. Relax receives only the answer ("trial, N days left", "purchased" or "not purchased"), and sends nothing about you or your files. Microsoft handles your purchase and payment under the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement). Vidyasagar Academy does not receive your payment or personal details.
+## Microsoft Store
+Relax is free. If you get it from the Microsoft Store, the download and installation are handled by Windows and the Microsoft Store under the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement). Relax itself sends nothing about you or your files, and Vidyasagar Academy does not receive your personal details.
 
 ## Links
 The About and Help menus contain links to our website, to this page, to our software catalog on GitHub, and an e-mail address. They open only when you click them, in your own web browser or e-mail program.

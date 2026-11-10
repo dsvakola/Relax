@@ -4,16 +4,16 @@ Copy these into Partner Center > Relax > Store listings > English (United States
 Store ID 9N4BPLF2TD95 · Identity Name VidyasagarAcademy.Relax-Yourdataissafe
 
 ## Pricing and availability
-- Price: Rs. 299, one-time purchase (paid app, no subscription).
-- Free trial: 7 days (Partner Center > Pricing and availability > Free trial > 7 days).
-- Wording to use everywhere: "Rs. 299 one-time, 7-day free trial". Never describe the app as "free".
+- Price: Free.
+- Free trial: No free trial (a free app cannot have one).
+- Wording to use everywhere: "Free". Do not mention a price or a trial.
 - Publisher display name: Vidyasagar Academy
 
 ## Product name
 Relax - Your data is safe!
 
 ## Short description (max 1000 characters)
-100% offline backup and folder synchronization for Windows. Compare two folders, preview every difference, then back up only what changed. Nothing is copied or deleted until you click Synchronize. Rs. 299 one-time, 7-day free trial.
+Free, 100% offline backup and folder synchronization for Windows. Compare two folders, preview every difference, then back up only what changed. Nothing is copied or deleted until you click Synchronize. No account, no ads, no tracking.
 
 ## Description
 Relax keeps your important files safe on USB drives, external hard disks and other folders, simply and reliably, without the cloud.
@@ -44,13 +44,12 @@ Convenient
 100% offline and private
 Relax never connects to the internet. No account, no ads, no tracking. Your files stay on your PC and your drives.
 
-Rs. 299 one-time purchase with a 7-day free trial. During the trial you see how many days are left. When it ends, Relax asks you to buy it; your files, jobs and backups are never touched or locked.
+Free to use, with no account, no ads and no tracking. Your files, jobs and backups are never touched or locked.
 
 Developed by Prof. Dattaraj S. Vidyasagar & Prof. Yash D. Vidyasagar, for Vidyasagar Academy.
 
 ## What's new in this version (2.1.1)
-• Now sold in the Microsoft Store: Rs. 299 one-time, with a 7-day free trial.
-• The trial shows "Trial: N days left" and a Buy button; after the trial a clear Buy Relax screen appears. Your files and backups are never touched.
+• Now available in the Microsoft Store, free of charge.
 • Runs on any Windows 10/11 PC, even without extra runtime files installed.
 • New sharper logos at every screen size.
 • Brand, About and Help updated to Vidyasagar Academy, with links to the privacy policy and more software on GitHub.
@@ -66,7 +65,7 @@ Scheduled automatic backups
 Include and exclude filters
 Logs of every backup
 100% offline: no account, no ads, no tracking
-Rs. 299 one-time, 7-day free trial
+Free: no account, no ads, no tracking
 
 ## Search terms (max 7)
 backup
@@ -91,11 +90,11 @@ Privacy policy URL (paste this in Partner Center; GitHub is always online): http
 © 2026 Vidyasagar Academy
 
 ## Age rating questionnaire (answers)
-No violence, no user interaction or chat, no sharing of location or personal information, no gambling. The only purchase is the one-time purchase of the app itself. Expected rating: 3+ / Everyone.
+No violence, no user interaction or chat, no sharing of location or personal information, no gambling, no purchases. Expected rating: 3+ / Everyone.
 
 ## Notes for certification (Partner Center > Submission options)
 - Relax is a classic Win32 desktop backup and folder-synchronization program, packaged with the runFullTrust capability. It needs it to read and copy files in any folder or drive the user chooses (including USB drives) and to start scheduled backups through Windows Task Scheduler. It never asks for administrator rights.
-- It uses no network access of its own. The trial and purchase check is done by Windows and the Microsoft Store (Windows.Services.Store).
+- It uses no network access of its own.
 - To test: choose two folders, press Compare, then Synchronize. Scheduled backups use Windows Task Scheduler through the RelaxBackup.exe alias.
 
 ## Screenshots (ready in docs\store\screenshots, 1902 x 1071)
@@ -103,4 +102,3 @@ No violence, no user interaction or chat, no sharing of location or personal inf
 2. Comparing two folders (progress)
 3. Settings (sync modes and safety options)
 4. Schedule dialog
-5. "Trial: N days left" badge in the status bar (optional)
