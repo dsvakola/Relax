@@ -94,7 +94,7 @@ Privacy policy URL (paste this in Partner Center; GitHub is always online): http
 No violence, no user interaction or chat, no sharing of location or personal information, no gambling. The only purchase is the one-time purchase of the app itself. Expected rating: 3+ / Everyone.
 
 ## Notes for certification (Partner Center > Submission options)
-- Relax is a full-trust desktop app (capability runFullTrust only). It never asks for administrator rights.
+- Relax is a classic Win32 desktop backup and folder-synchronization program, packaged with the runFullTrust capability. It needs it to read and copy files in any folder or drive the user chooses (including USB drives) and to start scheduled backups through Windows Task Scheduler. It never asks for administrator rights.
 - It uses no network access of its own. The trial and purchase check is done by Windows and the Microsoft Store (Windows.Services.Store).
 - To test: choose two folders, press Compare, then Synchronize. Scheduled backups use Windows Task Scheduler through the RelaxBackup.exe alias.
 
