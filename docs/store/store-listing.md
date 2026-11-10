@@ -98,7 +98,7 @@ No violence, no user interaction or chat, no sharing of location or personal inf
 - It uses no network access of its own. The trial and purchase check is done by Windows and the Microsoft Store (Windows.Services.Store).
 - To test: choose two folders, press Compare, then Synchronize. Scheduled backups use Windows Task Scheduler through the RelaxBackup.exe alias.
 
-## Screenshots (take these from the installed Store test package, 1920 x 1080)
+## Screenshots (ready in docs\store\screenshots, 1902 x 1071)
 1. Main window with a comparison preview
 2. Comparing two folders (progress)
 3. Settings (sync modes and safety options)
