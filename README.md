@@ -1,5 +1,7 @@
 # Relax - Your data is safe!
 
+<p><a href="https://apps.microsoft.com/detail/9n4bplf2td95"><img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200" alt="Get Relax - Your data is safe! from Microsoft"/></a></p>
+
 **Reliable, 100% offline backup and folder synchronization for Windows (version 2.1.1)**
 
 Developed by **Prof. Dattaraj S. Vidyasagar** & **Prof. Yash D. Vidyasagar**, for **Vidyasagar Academy**.
